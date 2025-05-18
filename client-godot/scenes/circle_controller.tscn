@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bemmdx8plr0c8"]
+
+[ext_resource type="Script" uid="uid://gx3va23uy542" path="res://scenes/circle_controller.gd" id="1_7ru76"]
+
+[node name="CircleController" type="Node2D"]
+script = ExtResource("1_7ru76")
+entity_id = null
+mass = null

@@ -29,7 +29,27 @@ func _on_spacetimedb_connected():
 	var queries = ["SELECT * FROM player"]
 	var req_id = SpacetimeDB.subscribe(queries)
 	if req_id < 0: printerr("Subscription failed!")
+	
+	# TODO: achieve the following logic in gdscript
+	#Debug.Log("Connected.");
+	#AuthToken.SaveToken(token);
+	#LocalIdentity = identity;
+#
+	#conn.Db.Circle.OnInsert += CircleOnInsert;
+	#conn.Db.Entity.OnUpdate += EntityOnUpdate;
+	#conn.Db.Entity.OnDelete += EntityOnDelete;
+	#conn.Db.Food.OnInsert += FoodOnInsert;
+	#conn.Db.Player.OnInsert += PlayerOnInsert;
+	#conn.Db.Player.OnDelete += PlayerOnDelete;
+#
+	#OnConnected?.Invoke();
+#
+	#// Request all tables
+	#Conn.SubscriptionBuilder()
+		#.OnApplied(HandleSubscriptionApplied)
+		#.SubscribeToAllTables();
 
+  
 func _on_spacetimedb_identity_received(identity_token: IdentityTokenData):
 	print("Game: My Identity: 0x%s" % identity_token.identity.hex_encode())
 	# Store identity if needed, e.g., var my_identity = identity_token.identity
