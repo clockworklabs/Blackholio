@@ -1,0 +1,186 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcklym85vmdt3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfrsg"]
+bg_color = Color(0.466667, 0.152941, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_soqxf"]
+bg_color = Color(0.375413, 0.115824, 0.115986, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7wgb"]
+bg_color = Color(0.151821, 0.467906, 0.254391, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3crsy"]
+bg_color = Color(0.127917, 0.404934, 0.217562, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yiric"]
+bg_color = Color(0.145098, 0.168627, 0.203922, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="prefab" type="Panel" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+offset_left = 896.0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 114.0
+
+[node name="LineEdit" type="LineEdit" parent="prefab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ModuleName"
+alignment = 1
+
+[node name="Button" type="Button" parent="prefab"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_soqxf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_dfrsg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfrsg")
+text = "-"
+
+[node name="Uri" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_right = -480.0
+offset_bottom = 48.0
+grow_horizontal = 2
+text = "http://127.0.0.1:3000"
+placeholder_text = "Server Uri"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 48.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Modules"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3crsy")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_s7wgb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s7wgb")
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = 64.0
+offset_bottom = -80.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Generate" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Generate schema"
+
+[node name="CheckUri" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -464.0
+offset_right = -272.0
+offset_bottom = 48.0
+grow_horizontal = 0
+text = "Check URI"
+
+[node name="Log" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_right = -272.0
+focus_mode = 0
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/read_only = SubResource("StyleBoxFlat_yiric")
+editable = false
+wrap_mode = 1

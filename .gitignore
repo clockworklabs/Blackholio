@@ -36,3 +36,5 @@ Temporary Items
 *.icloud
 
 # End of https://www.toptal.com/developers/gitignore/api/macos
+client-godot/spacetime_data/schema
+client-godot/spacetime_data/codegen_debug
