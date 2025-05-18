@@ -20,11 +20,11 @@ class_name CircleController extends EntityController
 var player_owner: PlayerController
 
 func spawn(circle: BlackholioCircle, input_owner: PlayerController):
-	super.spawn(circle.entity_id)
-	color = fmod(circle.player_id, color_palette.size())
+	spawn_entity(circle.entity_id)
+	color = color_palette[fmod(circle.player_id, color_palette.size())]
 	player_owner = input_owner
 	# TODO: Set the label for this circle GetComponentInChildren<TMPro.TextMeshProUGUI>().text = owner.Username;
 
-func on_delete():
+func on_delete(_context):
 	owner.on_circle_deleted(self)
 	queue_free()

@@ -9,7 +9,7 @@ var lerp_start_position: Vector3
 var lerp_target_position: Vector3
 var target_scale: Vector3
 
-func spawn(input_entity_id: int):
+func spawn_entity(input_entity_id: int):
 	entity_id = input_entity_id
 	var db = SpacetimeDB.get_local_database()
 	var entity = db.get_row("entity", input_entity_id)
