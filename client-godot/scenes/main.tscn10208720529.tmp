@@ -65,6 +65,7 @@ metadata/_custom_type_script = "uid://jvk6ou7i2d4s"
 
 [node name="CameraController" parent="." node_paths=PackedStringArray("menu_camera", "menu") instance=ExtResource("7_tipki")]
 offset = Vector2(7.845, 16.265)
+anchor_mode = 0
 enabled = false
 menu_camera = NodePath("../MenuCamera")
 menu = NodePath("../Menu")
@@ -117,11 +118,9 @@ layout_mode = 2
 placeholder_text = "Display Name"
 scroll_fit_content_height = true
 
-[node name="EnterGameButton" type="Button" parent="Menu/Panel/VBoxContainer" node_paths=PackedStringArray("menu", "camera", "menu_camera", "display_input")]
+[node name="EnterGameButton" type="Button" parent="Menu/Panel/VBoxContainer" node_paths=PackedStringArray("menu", "camera")]
 layout_mode = 2
 text = "Join"
 script = ExtResource("9_85g3d")
 menu = NodePath("../../..")
 camera = NodePath("../../../../CameraController")
-menu_camera = NodePath("../../../../MenuCamera")
-display_input = NodePath("../DisplayName")

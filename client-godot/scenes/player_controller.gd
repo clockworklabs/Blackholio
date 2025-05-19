@@ -6,21 +6,20 @@ class_name PlayerController extends Node2D
 		return owned_circles.size()
 @export var is_local_player: bool = false:
 	get():
-		return local_player == self
+		return GameManager.local_player == self
 
 const SEND_UPDATES_PER_SEC: int = 20
 const SEND_UPDATES_FREQUENCY: float = 1.0 / SEND_UPDATES_PER_SEC
 
 var player_id: int
-var local_player: PlayerController
 var last_movement_timestamp: float = 0
 var lock_input_position: Vector2 = Vector2.ZERO
 var owned_circles: Array[CircleController] = []
 
 func initialize(player: BlackholioPlayer):
-	player_id = player.id
-	if player.identity == GameManager.local_identity:
-		local_player = self
+	player_id = player.player_id
+	if player.identity.hex_encode() == GameManager.local_identity:
+		GameManager.local_player = self
 
 func on_destroy():
 	for circle in owned_circles:
@@ -40,16 +39,17 @@ func on_circle_deleted(circle: CircleController):
 		# TODO: Show death screen
 		return
 
-func total_mass():
+func total_mass() -> float:
 	var mass: float = 0
 	var db = SpacetimeDB.get_local_database()
 	for circle in owned_circles:
 		var entity = db.get_row("entity", circle.entity_id)
-		mass += circle.mass
+		mass += entity.mass
+	return mass
 		
-func center_of_mass():
+func center_of_mass() -> Vector2:
 	if number_of_owned_circles == 0:
-		return null
+		return Vector2.ZERO
 		
 	var db = SpacetimeDB.get_local_database()
 	var total_pos := Vector2.ZERO
@@ -62,13 +62,12 @@ func center_of_mass():
 		
 	return total_pos / total_mass
 
-func update():
-	if !local_player or number_of_owned_circles == 0:
+func _process(delta: float):
+	if !GameManager.local_player or number_of_owned_circles == 0:
 		return
 		
 	if Input.is_action_pressed("split"):
 		BlackholioModule.player_split()
-		pass
 	
 	if Input.is_action_pressed("lock_input"):
 		if lock_input_position != Vector2.ZERO:
@@ -86,7 +85,7 @@ func update():
 		var screen_size := get_viewport_rect().size
 		var center_of_screen := screen_size / 2
 		var direction = (mouse_position - center_of_screen) / (screen_size.y / 3)
-		BlackholioModule.update_player_input(direction)
+		BlackholioModule.update_player_input(BlackholioDbVector2.create(direction.x, direction.y))
 
 func on_gui():
 	if !is_local_player or !GameManager.is_connected:

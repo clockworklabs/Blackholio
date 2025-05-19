@@ -1,4 +1,5 @@
 extends Node
 
-var local_identity: PackedByteArray = []
+var local_player: PlayerController
+var local_identity: String
 var is_connected: bool = false
