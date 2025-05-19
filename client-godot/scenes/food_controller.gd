@@ -1,13 +1,12 @@
 class_name FoodController extends EntityController
 
 @export var color_palette: Array[Color] = [
-	Color(252, 173, 255),
-	Color(250, 146, 255),
-	Color(246, 120, 255),
-
-	Color(251, 201, 255),
-	Color(249, 184, 255),
-	Color(245, 165, 255),
+	Color(0.988, 0.678, 1.000),
+	Color(0.980, 0.573, 1.000),
+	Color(0.965, 0.471, 1.000),
+	Color(0.984, 0.788, 1.000),
+	Color(0.976, 0.722, 1.000),
+	Color(0.961, 0.647, 1.000)
 ]
 
 func _draw():

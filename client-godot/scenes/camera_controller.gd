@@ -25,6 +25,12 @@ func _process(delta: float):
 		offset = arena_center_transform
 		target_position = offset
 		return
+		
+	ImGui.Begin("Camera")
+	ImGui.Text("Zoom: %s" % target_zoom)
+	ImGui.Text("Mass: %s" % GameManager.local_player.total_mass())
+	ImGui.Text("Circles: %s" % GameManager.local_player.number_of_owned_circles)
+	ImGui.End()
 
 	var center_of_mass = local_player.center_of_mass()
 	if (center_of_mass):
@@ -35,7 +41,7 @@ func _process(delta: float):
 	else:
 		target_position = arena_center_transform
 
-
 func calculate_camera_size(local_player: PlayerController):
-	var distance_per_mass: float = 1.0
+	var distance_per_mass: float = 0.9
+	# TODO: This calculation is wrong
 	return distance_per_mass + min(distance_per_mass, local_player.total_mass() / 5) + min(local_player.number_of_owned_circles - distance_per_mass, distance_per_mass) * 30

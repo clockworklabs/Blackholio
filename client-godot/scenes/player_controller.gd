@@ -34,6 +34,7 @@ func on_circle_deleted(circle: CircleController):
 	for owned_circle in owned_circles:
 		if owned_circle == circle:
 			circle.queue_free()
+	owned_circles.erase(circle)
 	
 	if number_of_owned_circles == 0:
 		# TODO: Show death screen
@@ -43,8 +44,10 @@ func total_mass() -> float:
 	var mass: float = 0
 	var db = SpacetimeDB.get_local_database()
 	for circle in owned_circles:
+		if !is_instance_valid(circle): continue
 		var entity = db.get_row("entity", circle.entity_id)
-		mass += entity.mass
+		if entity:
+			mass += entity.mass
 	return mass
 		
 func center_of_mass() -> Vector2:
@@ -56,9 +59,11 @@ func center_of_mass() -> Vector2:
 	var total_mass := 0.0
 	
 	for circle in owned_circles:
+		if !is_instance_valid(circle): continue
 		var entity = db.get_row("entity", circle.entity_id)
-		total_pos += circle.global_position * entity.mass
-		total_mass += entity.mass
+		if entity:
+			total_pos += circle.global_position * entity.mass
+			total_mass += entity.mass
 		
 	return total_pos / total_mass
 

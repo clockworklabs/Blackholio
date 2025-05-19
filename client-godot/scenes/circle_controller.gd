@@ -1,27 +1,24 @@
 class_name CircleController extends EntityController
 
 @export var color_palette: Array[Color] = [
-	# Yellow
-	Color(175, 159, 49, 255),
-	Color(175, 116, 49, 255),
-	# Purple
-	Color(112, 47, 252, 255),
-	Color(51, 91, 252, 255),
-	# Red
-	Color(176, 54, 54, 255),
-	Color(176, 109, 54, 255),
-	Color(141, 43, 99, 255),
-	# Blue
-	Color(2, 188, 250, 255),
-	Color(7, 50, 251, 255),
-	Color(2, 28, 146, 255),
+	Color(0.686, 0.624, 0.192),
+	Color(0.686, 0.455, 0.192),
+	Color(0.439, 0.184, 0.988),
+	Color(0.200, 0.357, 0.988),
+	Color(0.690, 0.212, 0.212),
+	Color(0.690, 0.427, 0.212),
+	Color(0.553, 0.169, 0.388),
+	Color(0.008, 0.737, 0.980),
+	Color(0.027, 0.196, 0.984),
+	Color(0.008, 0.110, 0.573) 
 ]
 
 var player_owner: PlayerController
 
 func _draw():
 	# if !player_owner: return
-	draw_circle(Vector2.ZERO, actual_scale.x, color)
+	draw_circle(Vector2.ZERO, actual_scale.x * 0.5, color.darkened(0.2), false, 2.0)
+	draw_circle(Vector2.ZERO, actual_scale.x * 0.5, color)
 
 func spawn(circle: BlackholioCircle, input_owner: PlayerController):
 	spawn_entity(circle.entity_id)

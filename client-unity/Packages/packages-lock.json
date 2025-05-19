@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.clockworklabs.spacetimedbsdk": {
-      "version": "git@github.com:clockworklabs/com.clockworklabs.spacetimedbsdk.git#staging",
+      "version": "https://github.com/clockworklabs/com.clockworklabs.spacetimedbsdk.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "812e7c3e014005d31a5af41097b9c64a04c8c7df"
+      "hash": "c09f4d20b45b1f5862ca4d2a81c7656a1253d7a8"
     },
     "com.unity.2d.animation": {
       "version": "9.1.1",
@@ -37,11 +37,11 @@
       "depth": 2,
       "source": "registry",
       "dependencies": {
-        "com.unity.burst": "1.7.3",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.mathematics": "1.1.0",
+        "com.unity.modules.uielements": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.uielements": "1.0.0"
+        "com.unity.burst": "1.7.3"
       },
       "url": "https://packages.unity.com"
     },
@@ -102,7 +102,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.8.15",
+      "version": "1.8.16",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -112,7 +112,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "2.3.1",
+      "version": "2.4.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

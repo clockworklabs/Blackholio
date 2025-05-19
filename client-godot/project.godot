@@ -19,10 +19,11 @@ config/icon="res://icon.svg"
 
 SpacetimeDB="*res://addons/SpacetimeDB/Core/SpacetimeDBClient.gd"
 GameManager="*res://autoload/GameManager.gd"
+ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg")
+enabled=PackedStringArray("res://addons/SpacetimeDB/plugin.cfg", "res://addons/imgui-godot/plugin.cfg")
 
 [input]
 
