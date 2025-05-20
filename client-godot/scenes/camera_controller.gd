@@ -2,16 +2,21 @@ extends Camera2D
 
 @export var menu_camera: Camera2D
 @export var menu: Control
-@export var target_zoom: Vector2 = Vector2(10.0, 10.0)
+@export var target_zoom: Vector2 = Vector2(5.0, 5.0)
 @export var target_position: Vector2 = Vector2.ZERO
+
+@export var default_position: Vector2 = Vector2.ZERO
+@export var default_zoom: float = 4.5
+@export var mass_multiplier: float = 0.0005
+@export var circle_multiplier: float = 0.001
 
 var world_size: int = 1000:
 	set(new_value):
 		world_size = new_value
-		arena_center_transform = Vector2(world_size / 2, world_size / 2)
-		menu_camera.position = arena_center_transform
-		menu.position = arena_center_transform
-var arena_center_transform := Vector2(world_size / 2, world_size / 2)
+		arena_center_transform = Vector2(world_size / 4, world_size / 4)
+		menu_camera.position = default_position
+		menu.position = default_position
+var arena_center_transform := Vector2(world_size / 4, world_size / 4)
 
 func _process(delta: float):
 	zoom = lerp(zoom, target_zoom, delta * 2)
@@ -22,8 +27,7 @@ func _process(delta: float):
 		# Set the camera to be in middle of the arena if we are not connected or 
 		# there is no local player
 		target_zoom = Vector2(1.0, 1.0)
-		offset = arena_center_transform
-		target_position = offset
+		target_position = Vector2.ZERO
 		return
 		
 	ImGui.Begin("Camera")
@@ -37,11 +41,17 @@ func _process(delta: float):
 		# Set the camera to be the center of mass of the local player
 		# if the local player has one
 		target_position = Vector2(center_of_mass.x, center_of_mass.y)
-		target_zoom = Vector2.ONE * calculate_camera_size(local_player)
+		target_zoom = Vector2.ONE * calculate_camera_zoom(local_player)
 	else:
-		target_position = arena_center_transform
+		target_zoom = Vector2(default_zoom, default_zoom)
+		target_position = Vector2.ZERO
+		menu_camera.zoom = Vector2.ONE * 2
+		menu_camera.offset = offset
+		menu_camera.position = position
+		menu.position = Vector2.ZERO
+		menu.scale = Vector2(0.5, 0.5)
 
-func calculate_camera_size(local_player: PlayerController):
-	var distance_per_mass: float = 0.9
-	# TODO: This calculation is wrong
-	return distance_per_mass + min(distance_per_mass, local_player.total_mass() / 5) + min(local_player.number_of_owned_circles - distance_per_mass, distance_per_mass) * 30
+func calculate_camera_zoom(local_player: PlayerController):
+	var final_zoom = default_zoom - local_player.total_mass() * mass_multiplier
+	final_zoom -= local_player.number_of_owned_circles * circle_multiplier
+	return final_zoom

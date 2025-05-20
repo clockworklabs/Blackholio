@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxuk66njrs835"]
+[gd_scene load_steps=16 format=3 uid="uid://bxuk66njrs835"]
 
 [ext_resource type="Script" uid="uid://caf2ukha6d1l5" path="res://scenes/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://jvk6ou7i2d4s" path="res://addons/SpacetimeDB/GodotHelpers/RowReceiver.gd" id="2_0wfyh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dfx137l3hqnta" path="res://spacetime_data/schema/tables/blackholio_player_table.gd" id="6_85g3d"]
 [ext_resource type="Texture2D" uid="uid://bic0r5ke12xsa" path="res://assets/textures/StarBackground.png" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://buff80egtgxf0" path="res://scenes/camera_controller.tscn" id="7_tipki"]
+[ext_resource type="Shader" uid="uid://b1oibng64wcag" path="res://scenes/main.gdshader" id="8_choun"]
 [ext_resource type="Script" uid="uid://cj852krs1vdi0" path="res://scenes/enter_game_button.gd" id="9_85g3d"]
 
 [sub_resource type="Resource" id="Resource_choun"]
@@ -35,6 +36,12 @@ identity = PackedByteArray()
 player_id = 0
 name = ""
 metadata/_custom_type_script = "uid://dfx137l3hqnta"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ya4ey"]
+shader = ExtResource("8_choun")
+shader_parameter/border_size = 0.001
+shader_parameter/border_color = Color(1, 1, 1, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("circle_row_receiver", "entity_row_receiver", "food_row_receiver", "player_row_receiver")]
 script = ExtResource("1_o5qli")
@@ -73,6 +80,7 @@ menu = NodePath("../Menu")
 anchor_mode = 0
 
 [node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ya4ey")
 texture = ExtResource("7_o6xl0")
 expand_mode = 2
 
