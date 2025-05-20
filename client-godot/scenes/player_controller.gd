@@ -37,7 +37,7 @@ func on_circle_deleted(circle: CircleController):
 	owned_circles.erase(circle)
 	
 	if number_of_owned_circles == 0:
-		# TODO: Show death screen
+		GameManager.died.emit()
 		return
 
 func total_mass() -> float:

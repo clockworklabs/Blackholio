@@ -21,6 +21,7 @@ func spawn_entity(input_entity_id: int):
 	var entities = db.get_all_rows("entity")
 	for entity in entities:
 		if entity.entity_id == input_entity_id:
+			global_position = Vector2(entity.position.x, entity.position.y)
 			lerp_target_position = entity.position
 			global_position = Vector2(entity.position.x, entity.position.y)
 			scale = Vector2.ONE
