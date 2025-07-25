@@ -111,12 +111,12 @@ public class GameManager : MonoBehaviour
         {
             // The player has to choose a username
             UIUsernameChooser.Instance.Show(true);
+            
+            // When our username is updated, hide the username chooser
             Conn.Db.Player.OnUpdate += (_, _, newPlayer) =>
             {
-                Debug.LogWarning("Updated!");
                 if (newPlayer.Identity == LocalIdentity)
                 {
-                    Debug.Log("Hiding window.");
                     UIUsernameChooser.Instance.Show(false);
                 }
             };
