@@ -50,7 +50,7 @@ namespace SpacetimeDB.Types
         [DataContract]
         public sealed partial class SpawnFood : Reducer, IReducerArgs
         {
-            [DataMember(Name = "_timer")]
+            [DataMember(Name = "timer")]
             public SpawnFoodTimer Timer;
 
             public SpawnFood(SpawnFoodTimer Timer)
@@ -63,7 +63,7 @@ namespace SpacetimeDB.Types
                 this.Timer = new();
             }
 
-            string IReducerArgs.ReducerName => "spawn_food";
+            string IReducerArgs.ReducerName => "SpawnFood";
         }
     }
 

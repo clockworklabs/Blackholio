@@ -49,7 +49,7 @@ namespace SpacetimeDB.Types
         [DataContract]
         public sealed partial class Suicide : Reducer, IReducerArgs
         {
-            string IReducerArgs.ReducerName => "suicide";
+            string IReducerArgs.ReducerName => "Suicide";
         }
     }
 

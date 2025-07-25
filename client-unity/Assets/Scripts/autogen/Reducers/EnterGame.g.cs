@@ -63,7 +63,7 @@ namespace SpacetimeDB.Types
                 this.Name = "";
             }
 
-            string IReducerArgs.ReducerName => "enter_game";
+            string IReducerArgs.ReducerName => "EnterGame";
         }
     }
 

@@ -63,7 +63,7 @@ namespace SpacetimeDB.Types
                 this.Request = new();
             }
 
-            string IReducerArgs.ReducerName => "consume_entity";
+            string IReducerArgs.ReducerName => "ConsumeEntity";
         }
     }
 

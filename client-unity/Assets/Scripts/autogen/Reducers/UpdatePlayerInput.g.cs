@@ -63,7 +63,7 @@ namespace SpacetimeDB.Types
                 this.Direction = new();
             }
 
-            string IReducerArgs.ReducerName => "update_player_input";
+            string IReducerArgs.ReducerName => "UpdatePlayerInput";
         }
     }
 

@@ -479,18 +479,18 @@ namespace SpacetimeDB.Types
             var encodedArgs = update.ReducerCall.Args;
             return update.ReducerCall.ReducerName switch
             {
-                "circle_decay" => BSATNHelpers.Decode<Reducer.CircleDecay>(encodedArgs),
-                "circle_recombine" => BSATNHelpers.Decode<Reducer.CircleRecombine>(encodedArgs),
-                "connect" => BSATNHelpers.Decode<Reducer.Connect>(encodedArgs),
-                "consume_entity" => BSATNHelpers.Decode<Reducer.ConsumeEntity>(encodedArgs),
-                "disconnect" => BSATNHelpers.Decode<Reducer.Disconnect>(encodedArgs),
-                "enter_game" => BSATNHelpers.Decode<Reducer.EnterGame>(encodedArgs),
-                "move_all_players" => BSATNHelpers.Decode<Reducer.MoveAllPlayers>(encodedArgs),
-                "player_split" => BSATNHelpers.Decode<Reducer.PlayerSplit>(encodedArgs),
-                "respawn" => BSATNHelpers.Decode<Reducer.Respawn>(encodedArgs),
-                "spawn_food" => BSATNHelpers.Decode<Reducer.SpawnFood>(encodedArgs),
-                "suicide" => BSATNHelpers.Decode<Reducer.Suicide>(encodedArgs),
-                "update_player_input" => BSATNHelpers.Decode<Reducer.UpdatePlayerInput>(encodedArgs),
+                "CircleDecay" => BSATNHelpers.Decode<Reducer.CircleDecay>(encodedArgs),
+                "CircleRecombine" => BSATNHelpers.Decode<Reducer.CircleRecombine>(encodedArgs),
+                "Connect" => BSATNHelpers.Decode<Reducer.Connect>(encodedArgs),
+                "ConsumeEntity" => BSATNHelpers.Decode<Reducer.ConsumeEntity>(encodedArgs),
+                "Disconnect" => BSATNHelpers.Decode<Reducer.Disconnect>(encodedArgs),
+                "EnterGame" => BSATNHelpers.Decode<Reducer.EnterGame>(encodedArgs),
+                "MoveAllPlayers" => BSATNHelpers.Decode<Reducer.MoveAllPlayers>(encodedArgs),
+                "PlayerSplit" => BSATNHelpers.Decode<Reducer.PlayerSplit>(encodedArgs),
+                "Respawn" => BSATNHelpers.Decode<Reducer.Respawn>(encodedArgs),
+                "SpawnFood" => BSATNHelpers.Decode<Reducer.SpawnFood>(encodedArgs),
+                "Suicide" => BSATNHelpers.Decode<Reducer.Suicide>(encodedArgs),
+                "UpdatePlayerInput" => BSATNHelpers.Decode<Reducer.UpdatePlayerInput>(encodedArgs),
                 var reducer => throw new ArgumentOutOfRangeException("Reducer", $"Unknown reducer {reducer}")
             };
         }
