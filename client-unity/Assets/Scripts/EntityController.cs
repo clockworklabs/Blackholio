@@ -36,7 +36,6 @@ public abstract class EntityController : MonoBehaviour
 
 	public virtual void OnEntityUpdated(Entity newVal)
 	{
-		Debug.LogWarning($"New value {newVal}");
 		LerpTime = 0.0f;
 		LerpStartPosition = transform.position;
 		LerpTargetPosition = (Vector2)newVal.Position;

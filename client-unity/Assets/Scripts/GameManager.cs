@@ -181,7 +181,6 @@ public class GameManager : MonoBehaviour
 
     private static void EntityOnDelete(EventContext context, Entity oldEntity)
     {
-        Debug.LogWarning("Entity deleted: " + oldEntity.EntityId);
         if (Entities.Remove(oldEntity.EntityId, out var entityController))
         {
             entityController.OnDelete(context);
